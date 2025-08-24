@@ -1,0 +1,24 @@
+Given an array nums of size n, return the majority element.
+
+The majority element is the element that appears more than ⌊n / 2⌋ times. You may assume that the majority element always exists in the array.
+
+SOLUTION:
+
+class Solution {
+    public int majorityElement(int[] nums) {
+
+        HashMap<Integer, Integer>M = new HashMap<>();
+        int len = nums.length;
+
+        for(int i : nums) {
+            M.put(i, M.getOrDefault(i,0)+1);
+        }
+
+        for(HashMap.Entry<Integer, Integer>entry : M.entrySet()) {
+            if(entry.getValue() > len/2){
+                return entry.getKey();
+            }
+        }
+        return -1;
+    }
+}
